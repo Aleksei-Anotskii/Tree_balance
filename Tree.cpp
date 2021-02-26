@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//Реализация процедур балансировки
+//Р РµР°Р»РёР·Р°С†РёСЏ РїСЂРѕС†РµРґСѓСЂ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё
 template <typename type>
 void Balanc::Big_left_V(struct leaf<type>* P)
 {
@@ -12,12 +12,12 @@ void Balanc::Big_left_V(struct leaf<type>* P)
 	q = P->l;
 	P->l = P->r->l;
 	g = P->l->l;
-	P->l->l = q;              //поставил A
-	P->r->l = P->r->l->r;     //поставил C
-	P->l->r = g;              //поставил B
+	P->l->l = q;              //РїРѕСЃС‚Р°РІРёР» A
+	P->r->l = P->r->l->r;     //РїРѕСЃС‚Р°РІРёР» C
+	P->l->r = g;              //РїРѕСЃС‚Р°РІРёР» B
 	i = P->z;
-	P->z = P->l->z;           //записал c
-	P->l->z = i;              //записал a
+	P->z = P->l->z;           //Р·Р°РїРёСЃР°Р» c
+	P->l->z = i;              //Р·Р°РїРёСЃР°Р» a
 	{
 		if ((P->l->l != NULL) && (P->l->r != NULL))
 		{
@@ -54,12 +54,12 @@ void Balanc::Big_right_V(struct leaf<type>* P)
 	q = P->r;
 	P->r = P->l->r;
 	g = P->r->r;
-	P->r->r = q;              //поставил A
-	P->l->r = P->l->r->l;     //поставил C
-	P->r->l = g;              //поставил B
+	P->r->r = q;              //РїРѕСЃС‚Р°РІРёР» A
+	P->l->r = P->l->r->l;     //РїРѕСЃС‚Р°РІРёР» C
+	P->r->l = g;              //РїРѕСЃС‚Р°РІРёР» B
 	i = P->z;
-	P->z = P->r->z;           //записал c
-	P->r->z = i;              //записал a
+	P->z = P->r->z;           //Р·Р°РїРёСЃР°Р» c
+	P->r->z = i;              //Р·Р°РїРёСЃР°Р» a
 	{
 		if ((P->r->r != NULL) && (P->r->l != NULL))
 		{
@@ -95,12 +95,12 @@ void Balanc::Small_left_V(struct leaf<type>* P)
 	struct leaf<type> *q;
 	q = P->l;
 	P->l = P->r;
-	P->r = P->l->r;      //поставил C
-	P->l->r = P->l->l;   //поставил B
-	P->l->l = q;         //поставил A
+	P->r = P->l->r;      //РїРѕСЃС‚Р°РІРёР» C
+	P->l->r = P->l->l;   //РїРѕСЃС‚Р°РІРёР» B
+	P->l->l = q;         //РїРѕСЃС‚Р°РІРёР» A
 	i = P->z;
-	P->z = P->l->z;      //записал b
-	P->l->z = i;         //записал a
+	P->z = P->l->z;      //Р·Р°РїРёСЃР°Р» b
+	P->l->z = i;         //Р·Р°РїРёСЃР°Р» a
 	{
 		if ((P->l->l != NULL) && (P->l->r != NULL))
 		{
@@ -128,12 +128,12 @@ void Balanc::Small_right_V(struct leaf<type>* P)
 	struct leaf<type> *q;
 	q = P->r;
 	P->r = P->l;
-	P->l = P->r->l;      //поставил C
-	P->r->l = P->r->r;   //поставил B
-	P->r->r = q;         //поставил A
+	P->l = P->r->l;      //РїРѕСЃС‚Р°РІРёР» C
+	P->r->l = P->r->r;   //РїРѕСЃС‚Р°РІРёР» B
+	P->r->r = q;         //РїРѕСЃС‚Р°РІРёР» A
 	i = P->z;
-	P->z = P->r->z;      //записал b
-	P->r->z = i;         //записал a
+	P->z = P->r->z;      //Р·Р°РїРёСЃР°Р» b
+	P->r->z = i;         //Р·Р°РїРёСЃР°Р» a
 	{
 		if ((P->r->r != NULL) && (P->r->l != NULL))
 		{
@@ -155,7 +155,7 @@ void Balanc::Small_right_V(struct leaf<type>* P)
 	else P->h = P->l->h + 1;
 }
 
-//Реализация алгоритма выборки балансировки
+//Р РµР°Р»РёР·Р°С†РёСЏ Р°Р»РіРѕСЂРёС‚РјР° РІС‹Р±РѕСЂРєРё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё
 template <typename type>
 void Balanc::Balanc(struct leaf<type>* P)
 {
@@ -261,7 +261,7 @@ void Balanc::Balanc(struct leaf<type>* P)
 }
 
 
-//Вставка структуры в дерево (с последующими: пересчетом глубины и балансировкой)
+//Р’СЃС‚Р°РІРєР° СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ РґРµСЂРµРІРѕ (СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРјРё: РїРµСЂРµСЃС‡РµС‚РѕРј РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№)
 template <typename type>
 void proc::insert_(struct leaf<type>* P, struct leaf<type>* q)
 {
@@ -279,7 +279,7 @@ void proc::insert_(struct leaf<type>* P, struct leaf<type>* q)
 			q->d = P;
 		}
 		else insert_(P->r, q);
-	//Блок пересчёта глубины и балансировки
+	//Р‘Р»РѕРє РїРµСЂРµСЃС‡С‘С‚Р° РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё
 	if ((P->l != NULL) && (P->r != NULL))
 		if (P->l->h > P->r->h)  P->h = P->l->h + 1;
 		else  P->h = P->r->h + 1;
@@ -288,7 +288,7 @@ void proc::insert_(struct leaf<type>* P, struct leaf<type>* q)
 	Balanc::Balanc(P);
 };
 
-//Наличие элемента в дереве
+//РќР°Р»РёС‡РёРµ СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРµ
 template <typename type>
 bool proc::exists_(struct leaf<type>* P, type z)
 {
@@ -302,7 +302,7 @@ bool proc::exists_(struct leaf<type>* P, type z)
 	return b;
 }
 
-//Поиск элемента дерева на замену удоляемого
+//РџРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° РґРµСЂРµРІР° РЅР° Р·Р°РјРµРЅСѓ СѓРґРѕР»СЏРµРјРѕРіРѕ
 template <typename type>
 type proc::sear_(struct leaf<type>* P)
 {
@@ -320,7 +320,7 @@ type proc::sear_(struct leaf<type>* P)
 		delete P;
 		P = NULL;
 	}
-	//Блок пересчёта глубины и балансировки
+	//Р‘Р»РѕРє РїРµСЂРµСЃС‡С‘С‚Р° РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё
 	if (P != NULL) {
 		if ((P->l != NULL) && (P->r != NULL))
 			if (P->l->h > P->r->h)  P->h = P->l->h + 1;
@@ -333,7 +333,7 @@ type proc::sear_(struct leaf<type>* P)
 	return x;
 }
 
-//Удаление элемента из дерева (с последующими: пересчетом глубины и балансировкой)
+//РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РґРµСЂРµРІР° (СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРјРё: РїРµСЂРµСЃС‡РµС‚РѕРј РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№)
 template <typename type>
 void proc::remove_(struct leaf<type>* P, type z)
 {
@@ -376,7 +376,7 @@ void proc::remove_(struct leaf<type>* P, type z)
 	}
 	else if ((P->r != NULL) && (P->z < z)) remove_(P->r, z);
 	else if (P->l != NULL) remove_(P->l, z);
-	//Блок пересчёта глубины и балансировки
+	//Р‘Р»РѕРє РїРµСЂРµСЃС‡С‘С‚Р° РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРё
 	if (P != NULL) {
 		if ((P->l != NULL) && (P->r != NULL))
 			if (P->l->h > P->r->h)  P->h = P->l->h + 1;
@@ -388,7 +388,7 @@ void proc::remove_(struct leaf<type>* P, type z)
 	}
 }
 
-//Вывод дерева на экран
+//Р’С‹РІРѕРґ РґРµСЂРµРІР° РЅР° СЌРєСЂР°РЅ
 template <typename type>
 void proc::print_(struct leaf<type>* P)
 {
@@ -405,7 +405,7 @@ void proc::print_(struct leaf<type>* P)
 }
 
 
-//Запуск удаления дерева
+//Р—Р°РїСѓСЃРє СѓРґР°Р»РµРЅРёСЏ РґРµСЂРµРІР°
 template <typename type>
 void SimpleTree<type>::del(struct leaf<type>* P) {
 	if (P->l != NULL) del(P->l);
@@ -413,7 +413,7 @@ void SimpleTree<type>::del(struct leaf<type>* P) {
 	delete P;
 }
 
-//Конструкторы и деструктор
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Рё РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 template <typename type>
 SimpleTree<type>::SimpleTree() {
 	P = NULL;
@@ -432,7 +432,7 @@ SimpleTree<type>::~SimpleTree() {
 	if (P != NULL) del(P);
 };
 
-//Вставка элемента в дерево (с последующими: пересчетом глубины и балансировкой)
+//Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРѕ (СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРјРё: РїРµСЂРµСЃС‡РµС‚РѕРј РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№)
 template <typename type>
 void SimpleTree<type>::insert(type z) {
 	struct leaf<type>* q = new struct leaf<type>;
@@ -445,14 +445,14 @@ void SimpleTree<type>::insert(type z) {
 	else P = q;
 }
 
-//Наличие элемента дереве
+//РќР°Р»РёС‡РёРµ СЌР»РµРјРµРЅС‚Р° РґРµСЂРµРІРµ
 template <typename type>
 bool SimpleTree<type>::exists(type z) {
 	if (P == NULL) return false;
 	else return proc::exists_(P, z);
 }
 
-//Удаление элемента из дерева (с последующими: пересчетом глубины и балансировкой)
+//РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РґРµСЂРµРІР° (СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРјРё: РїРµСЂРµСЃС‡РµС‚РѕРј РіР»СѓР±РёРЅС‹ Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№)
 template <typename type>
 void SimpleTree<type>::remove(type z) {
 	if (P == NULL) return;
@@ -463,7 +463,7 @@ void SimpleTree<type>::remove(type z) {
 	else proc::remove_(P, z);
 }
 
-//Вывод дерева на экран
+//Р’С‹РІРѕРґ РґРµСЂРµРІР° РЅР° СЌРєСЂР°РЅ
 template <typename type>
 void  SimpleTree<type>::print() {
 	if (P == NULL)
